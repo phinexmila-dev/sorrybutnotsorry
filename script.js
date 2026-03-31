@@ -57,60 +57,51 @@ function _0x2c8b99(){
     setTimeout(()=>document['getElementById'](_0x4cdf68(0xe64))[_0x4cdf68(0x1544)](),0x64);
 }
 
-async function _0x1a2557(){
-    const _0x1b0cd6=_0x3ce505,
-    _0x20db4e=document[_0x1b0cd6(0x1023)](_0x1b0cd6(0x151e)),
-    _0x595cea=document[_0x1b0cd6(0x1023)]('login-msg'),
-    _0xcf7c1b=document['getElementById'](_0x1b0cd6(0x19d));
-    
-    if(!_0x20db4e){
-        console[_0x1b0cd6(0x110f)]('输入框未找到');
-        return;
-    }
-    
-    const _0x402bd5=_0x20db4e[_0x1b0cd6(0x16b0)][_0x1b0cd6(0x1833)]();
-    
-    if(!_0x402bd5){
-        _0x595cea['textContent']='请输入解锁密码',
-        _0x595cea[_0x1b0cd6(0x791)][_0x1b0cd6(0xb1c)]=_0x1b0cd6(0x1228);
-        return;
-    }
-    
-    _0x595cea['textContent']='验证中...',
-    _0x595cea[_0x1b0cd6(0x791)][_0x1b0cd6(0xb1c)]='#ffffff',
-    _0xcf7c1b[_0x1b0cd6(0x1794)]=!![],
-    _0xcf7c1b[_0x1b0cd6(0x1bf6)]=_0x1b0cd6(0xc3b);
-    
-    // 离线验证：密码为 123 即可解锁
-    if(_0x402bd5 === '123'){
-        _0x595cea[_0x1b0cd6(0x791)]['color']=_0x1b0cd6(0x394),
-        _0x595cea[_0x1b0cd6(0x71a)]='解锁成功，欢迎使用！',
-        localStorage['setItem']('ephone_unlocked', 'true');
+//st
+
+async function _0x1a2557() {
+    const _0x1b0cd6 = _0xca61b6; // 這是你文件開頭定義的解密函數
+    const _0x4cd5f1 = document.getElementById('login-uid');
+    const _0x20db4e = document.getElementById('login-pwd');
+    const _0x595cea = document.getElementById('login-msg');
+
+    const account = _0x4cd5f1.value.trim();
+    const password = _0x20db4e.value.trim();
+
+    // 檢查是否輸入 123/123
+    if (account === "123" && password === "123") {
+        _0x595cea.textContent = '登入成功，正在初始化...';
+        _0x595cea.style.color = '#34c759';
+
+        // 模擬成功回傳的資料物件
+        const fakeData = {
+            success: true,
+            username: "測試用戶",
+            user_id: "123"
+        };
+
+        // 執行原本系統登入後的必要程序
+        localStorage.setItem('ephone_user_id', fakeData.user_id);
+        localStorage.setItem('ephone_username', fakeData.username);
+
+        // 呼叫原本的初始化與隱藏 UI 函數
+        // 注意：這裡的函數名 _0x360ed5 和 _0x5b2a1a 必須對應你文件中的實際名稱
+        _0x360ed5(fakeData.user_id); 
         
-        try {
-            const _0x280981=document['getElementById'](_0x1b0cd6(0x1731));
-            if(_0x280981){
-                _0x280981[_0x1b0cd6(0x791)][_0x1b0cd6(0x57b)]=_0x1b0cd6(0xb6c);
-                _0x280981[_0x1b0cd6(0x791)][_0x1b0cd6(0x24c)]='0';
-                setTimeout(()=>_0x280981[_0x1b0cd6(0x1aa6)](),0x1f4);
-            }
-            
-            const _0x3d7399=document[_0x1b0cd6(0x1023)](_0x1b0cd6(0xdcb));
-            if(_0x3d7399)_0x3d7399['style'][_0x1b0cd6(0xab9)]=_0x1b0cd6(0x12c8);
-            
-            _0x5b2a1a();
-        } catch(_0x5d865b){
-            console[_0x1b0cd6(0x110f)](_0x5d865b);
-            _0x595cea[_0x1b0cd6(0x791)]['color']=_0x1b0cd6(0x1228);
-            _0x595cea[_0x1b0cd6(0x71a)]='初始化失败，请重试';
-            _0x1a7d5c(_0xcf7c1b);
+        const loginContainer = document.getElementById('google-fonts-login-container');
+        if (loginContainer) {
+            loginContainer.style.display = 'none';
         }
+        
+        // 啟動主服務
+        _0x5b2a1a(); 
     } else {
-        _0x595cea[_0x1b0cd6(0x791)][_0x1b0cd6(0xb1c)]='#ff453a';
-        _0x595cea['textContent']='密码错误，请重试';
-        _0x1a7d5c(_0xcf7c1b);
+        _0x595cea.textContent = '帳號或密碼錯誤 (請輸入 123)';
+        _0x595cea.style.color = '#ff453a';
     }
 }
+
+//end
 
 function _0x1a7d5c(_0x6add62){
     const _0x35a6dd=_0x3ce505;
